@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Your favourite Player?</title>
+        <link rel="stylesheet" href="./css/form.css">
+        <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.min.js"></script>
+    </head>
+
+    <body>
+
+        <div class="Register">
+            <div class="logo">
+                <img src="./img/logo.png" style="width:100%;height:100%;">
+            </div>
+            <h3 style="text-align:center;font-size: x-large;">Welcome!</h3>
+            <div class="form"></div>
+                <form id = "reg">
+                    <label for="name">Name：</label><br>
+                    <input type="text" id="name" name="name"><br>
+                    <label for="passwd">Password：</label><br>
+                    <input type="password" id="passwd" name="passwd"><br>
+                    <label for="email">Email：</label><br>
+                    <input type="text" id="email_1" name="email_1" style="width: 53%;">@<input type="text" id="email_2" name="email_2" style="width:23%"><br>
+                    <label for="verify-code">Verify Code：</label><input id="verify" class="s" type="submit" value="Send" style="margin-left: 50%;"><br>
+                    <input type="text" id="verify-code" name="verify-code"><br>
+                    <center><input class="r" id="register" type="submit" value="Register"></center>
+                </form>
+            </div>
+        </div>
+        </footer>
+
+    </body>
+    <script>
+        $(function () {
+            $('#verify').click(function (e) {  
+                e.preventDefault()                  
+                let formdata = $('#reg').serialize()
+                let Data = formdata.split("&")
+                Data[2]=Data[2].replace("email_1=","")
+                Data[3]=Data[3].replace("email_2=","")
+                let body = Data[2]+"@"+Data[3]
+                $.ajax({                              
+                    type : 'POST',                       
+                    url : 'http://190.92.241.16/api/Send-Verify',  
+                    data:{body},
+                    success: function (data, textStatus, jqXHR) {
+                        alert("Verify code has been sent!");
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        alert(jqXHR.responseText);
+                    }
+                })
+                return true;
+            });
+            $('#register').click(function (e) {  
+                e.preventDefault()                  
+                var formdata = $('#reg').serialize()
+                let body = formdata.toString()       
+                $.ajax({                              
+                    type : 'POST',                       
+                    url : 'http://190.92.241.16/api/Register',  
+                    data:{body},
+                    success: function (data, textStatus, jqXHR) {
+                        // window.location = "./index.html";
+                        alert(jqXHR.responseText);
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        /*错误信息处理*/
+                        alert(jqXHR.responseText);
+                    }
+                })
+                return true;
+            });
+        })
+    </script>
+
+</html>

@@ -1,0 +1,71 @@
+.info {
+    position: absolute;
+    top: 22%;
+    left: 12%;
+    width: 70%;
+    height: 28%;
+    padding: 10px 40px 10px 40px;
+    font-style: black;
+    border: dashed 3px black;
+    border-radius: 10px;
+}
+
+.favorite {
+    position: absolute;
+    top: 55%;
+    left: 12%;
+    width: 70%;
+    padding: 10px 40px 10px 40px;
+    font-style: black;
+    border: dashed 3px black;
+    border-radius: 10px;
+}
+
+.player {
+    position: absolute;
+    font-style: black;
+    border: solid 2px #970a31;
+    width: 200px;
+    height: 280px;
+    left: 45px;
+    top: 90px;
+}
+
+.player img {
+    width: 200px;
+    height: 220px;
+}
+
+.player .heart-2 {
+    position:absolute;
+    background: url(../img/heart-2.jpg);
+    height: 20px;
+    width:25px;
+    left:80%;
+    top: 91%;
+    z-index: 999999;
+    background-size: cover;
+}
+
+.player .heart-1 {
+    position:absolute;
+    background: url(../img/heart-1.jpg);
+    height: 20px;
+    width:25px;
+    left:80%;
+    top: 91%;
+    z-index: 999999;
+    background-size: cover;
+}
+
+.player .del {
+    display:block;
+    position:absolute;
+    background: url(../img/del.png);
+    height: 23px;
+    width:23px;
+    left:80%;
+    top: 80%;
+    z-index: 999999;
+    background-size: cover;
+}
